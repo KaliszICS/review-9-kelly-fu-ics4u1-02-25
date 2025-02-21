@@ -4,46 +4,35 @@ public class PracticeProblem {
 
 	}
 
-	//1
-	public static int lettersToFive(String word, char letter){
+	public static int lettersToFive(String sentence, char letter) {
 		int count = 0;
-		int index = 0;
-		while (index < word.length()){
-			if (word.charAt(index) == letter){
-				count++;
-				if (count == 5){
-				return index+1;
-				}
-			}
-			index++;
+		for (int i = 0; i < sentence.length(); ++i) {
+			if (sentence.charAt(i) == letter) ++count;
+			if (count == 5) return i + 1;
 		}
 		return -1;
 	}
 
-	//2
-	public static int countLetter(String word2, char letter2){
-		int count2 = 0;
-		for (int i = 0; i < word2.length(); i++){
-			if (word2.charAt(i) == letter2){
-				count2++;
-			}
+
+	public static int countLetter(String sentence, char letter) {
+		int count = 0;
+		for (int i = 0; i < sentence.length(); ++i) {
+			if (sentence.charAt(i) == letter) 
+			++count;
 		}
-		return count2;
+		return count;
 	}
+
 	
-	//3
-	public static int _oddSum_ (int a, int b){
-		int sum = 0;
-		int min = Math.min(a,b);
-		int max = Math.max(a,b);
-		for (int i = min; i <= max; i++){
-			if (i % 2 == 0){
-				sum += i;
-			}
-		}
-		return sum;
+	public static int oddSum(int first, int last) {
+		int actualFirst = Math.min(first, last), actualLast = Math.max(first, last);
+		if (actualFirst%2 == 0) {
+		++actualFirst;
 	}
-
-
+		if (actualLast%2 == 0) {
+		--actualLast;
+	}
+		return (actualLast - actualFirst + 2)*(actualLast + actualFirst)/4;
+	}
 
 }
